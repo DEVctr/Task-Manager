@@ -1,4 +1,4 @@
-package org.devctr.todo;
+package org.devctr.todo.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
