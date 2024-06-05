@@ -9,12 +9,12 @@ public class ConnectionFactory {
     private Connection connection;
 
     public ConnectionFactory() {
-        this.url = "jdbc:postgresql://localhost:5432/todo";
+        this.url = "";
     }
 
     public Connection getConnection() {
-        String username = "postgres";
-        String password = "databaseii";
+        String username = "";
+        String password = "";
 
         if (connection == null) {
             try {

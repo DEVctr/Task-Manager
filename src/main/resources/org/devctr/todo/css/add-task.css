@@ -1,0 +1,72 @@
+.anchor-pane {
+    -fx-spacing: 10px;
+    -fx-background-color: none;
+}
+
+.vbox {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: linear-gradient(to right, rgba(46, 167, 64, 0.5), rgba(1, 102, 250, 0.5));
+}
+
+.label-task-name {
+    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+}
+
+.label-task-description {
+    -fx-border-radius: 5px;
+    -fx-border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* DatePícker */
+.date-picker .text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-text-fill: BLACK;
+    -fx-font-weight: bold;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: linear-gradient(to right, rgba(46, 167, 64, 0.3), rgba(1, 102, 250, 0.3));
+}
+
+.date-picker .arrow {
+    -fx-background-color: WHITE;
+}
+
+.date-picker-popup .calendar-pane {
+    -fx-background-color:linear-gradient(to right, rgba(46, 167, 64), rgba(1, 102, 250));
+    -fx-border-color: rgba(255, 255, 255, 0.8);
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-background-color: rgba(46, 167, 64, 0.8);
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-text-fill: black;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: rgba(1, 102, 250, 0.3);
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: linear-gradient(to right, rgba(46, 167, 64, 0.3), rgba(1, 102, 250, 0.3));
+    -fx-text-fill: white;
+}
+ /**/
+
+.add-task-button {
+    -fx-text-fill: WHITE;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgb(215, 215, 216);
+}
+
+.add-task-button:hover {
+    -fx-background-color: linear-gradient(to right, rgba(46, 167, 64, 0.8), rgba(1, 102, 250, 0.8));
+}

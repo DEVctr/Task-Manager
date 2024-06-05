@@ -1,14 +1,12 @@
 package org.devctr.todo.Controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import org.devctr.todo.Model.DBConnection.TaskDAO;
 
 public class MainController {
-    @FXML
-    private Label welcomeText;
+    protected static TaskDAO taskDAO = new TaskDAO();
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
     }
 }

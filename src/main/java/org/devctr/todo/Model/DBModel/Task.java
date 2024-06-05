@@ -1,16 +1,22 @@
 package org.devctr.todo.Model.DBModel;
 
+import java.sql.Timestamp;
+
 public class Task {
-    private String id;
-    private String title;
+    private int id;
+    private String task_name;
     private String description;
+    private Timestamp deadline;
+    private Timestamp created_at;
     private String priority;
     private String status;
 
-    public Task(String id, String title, String description, String priority, String status) {
+    public Task(int id, String task_name, String description, Timestamp deadline, Timestamp created_at, String priority, String status) {
         this.id = id;
-        this.title = title;
+        this.task_name = task_name;
         this.description = description;
+        this.deadline = deadline;
+        this.created_at = created_at;
         this.priority = priority;
         this.status = status;
     }
@@ -39,19 +45,35 @@ public class Task {
         this.description = description;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTask_name() {
+        return task_name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTask_name(String task_name) {
+        this.task_name = task_name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public Timestamp getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Timestamp deadline) {
+        this.deadline = deadline;
+    }
+
+    public Timestamp getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
     }
 }
