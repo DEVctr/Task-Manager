@@ -22,14 +22,14 @@ public class ModelDAO {
         }
     }
 
-    public void update(String id, String column, String value){
+    public void update(int id, String column, String value){
         String sql = String.format("UPDATE %s SET %s = ? WHERE %s = ?", this.tableName, column, this.tableId);
         PreparedStatement preparedStatement;
 
         try{
             preparedStatement = connection.getConnection().prepareStatement(sql);
             preparedStatement.setString(1, value);
-            preparedStatement.setString(2, id);
+            preparedStatement.setInt(2, id);
             preparedStatement.execute();
             preparedStatement.close();
         } catch (SQLException | NullPointerException e){
@@ -37,13 +37,13 @@ public class ModelDAO {
         }
     }
 
-    public void delete(String id){
+    public void delete(int id){
         String sql = String.format("DELETE FROM %s WHERE %s = ?", this.tableName, this.tableId);
         PreparedStatement preparedStatement = null;
 
         try{
             preparedStatement = connection.getConnection().prepareStatement(sql);
-            preparedStatement.setString(1, id);
+            preparedStatement.setInt(1, id);
             preparedStatement.execute();
             preparedStatement.close();
         } catch (SQLException e){

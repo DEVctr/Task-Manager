@@ -19,11 +19,13 @@ import java.time.*;
 import static org.devctr.todo.View.MainApplication.addPopUpScene;
 
 public class AddTask extends MainController{
-    static Stage stage = new Stage();
+    public static Stage stage = new Stage();
+    private static TaskController taskController;
+    private final Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    private static String status;
+    private String priority = "";
     @FXML
     private Button closeButton;
-    @FXML
-    private Button addTaskButton;
     @FXML
     private TextField taskName;
     @FXML
@@ -41,27 +43,39 @@ public class AddTask extends MainController{
         stage.initStyle(StageStyle.TRANSPARENT);
 
         closeButton.setOnAction(actionEvent -> stage.close());
+
+        buttonUrgentPriority.setOnAction(actionEvent -> priority = buttonUrgentPriority.getText());
+        buttonNonUrgentPriority.setOnAction(actionEvent -> priority = buttonNonUrgentPriority.getText());
     }
 
-    public static void newTaskPopUp() throws IOException {
-        if (!stage.hasProperties()) {
-            stage.getIcons().add(new Image(String.valueOf(AddTask.class.getResource("/org/devctr/todo/images/button-add.png"))));
-        }
+    public static void newTaskPopUp(TaskController controller, String s) throws IOException {
+        taskController = controller;;
+        status = s;
 
-        //addPopUpScene.getStylesheets().add(AddTask.class.getResource("/org/devctr/todo/css/add-task.css").toExternalForm());
+        stage.getIcons().add(new Image(String.valueOf(AddTask.class.getResource("/org/devctr/todo/images/button-add.png"))));
+
+        addPopUpScene.getStylesheets().add(AddTask.class.getResource("/org/devctr/todo/css/add-task.css").toExternalForm());
         addPopUpScene.setFill(Color.TRANSPARENT);
 
         moveStage(stage, addPopUpScene);
-
         stage.setScene(addPopUpScene);
         stage.show();
     }
 
-    private void labelListeners() {}
-    private void datePickerListener() {}
-    private void priorityButtonsSetOnAction(){}
+    public void addTodoButton() {
+        Task task = new Task(0, taskName.getText(), taskDescription.getText(),
+                convertLocalDate(), timestamp, priority, status);
 
-    public void addButton() {
+        if (!taskName.getText().isBlank()){
+            taskDAO.create(task);
+            taskController.addTaskToVBox(task, status);
+            stage.close();
+        } else {
+            taskName.setBorder(Border.stroke(Paint.valueOf("red")));
+        }
+    }
+
+    private Timestamp convertLocalDate() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         if (datePickerDeadline.getValue() != null) {
@@ -71,17 +85,7 @@ public class AddTask extends MainController{
             timestamp = Timestamp.from(instant);
         }
 
-        Task task = new Task(0, taskName.getText(), taskDescription.getText(),
-                timestamp, null, "urgent", "todo");
-
-        if (!taskName.getText().isBlank()){
-            taskDAO.create(task);
-            stage.close();
-        } else {
-            taskName.setBorder(Border.stroke(Paint.valueOf("red")));
-        }
-
-
+        return timestamp;
     }
 
     private static void moveStage(Stage stage, Scene scene) {

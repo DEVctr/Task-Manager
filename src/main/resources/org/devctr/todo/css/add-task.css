@@ -7,7 +7,7 @@
     -fx-padding: 10px;
     -fx-spacing: 10px;
     -fx-background-radius: 10px;
-    -fx-background-color: linear-gradient(to right, rgba(46, 167, 64, 0.5), rgba(1, 102, 250, 0.5));
+    -fx-background-color: linear-gradient(to right, rgba(46, 167, 64, 0.7), rgba(1, 102, 250, 0.7));
 }
 
 .label-task-name {

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 public class MainApplication extends Application {
@@ -30,6 +31,8 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(timestamp);
         launch();
     }
 }
